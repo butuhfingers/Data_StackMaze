@@ -61,7 +61,6 @@ public class Maze {
 
     //Generate the maze
     public void GenerateMaze(){
-        out.println("Start Generation");
         //Generate the start node
         startNode = this.squareAt(new Coordinate(new Random().nextInt(this.rows) , 0));
         startNode.getWall(Direction.WEST).Toggle();
@@ -110,17 +109,13 @@ public class Maze {
 
 
         //Once the maze is generated, we need to set everything to not visited and not abandoned
-        for(int r = 0;r > rows;r++){
-            for(int c = 0;c > columns;c++){
+        for(int r = 0;r < rows;r++){
+            for(int c = 0;c < columns;c++){
                 squareAt(new Coordinate(r, c)).clearAbandon();
                 squareAt(new Coordinate(r, c)).clearVisit();
-
-                out.println("Row: " + r);
-    //            System.out.println(squareAt(new Coordinate(r, c)).toString());
             }
         }
 
-        out.println("Generation done: " + columns);
 
         UpdateAll(mazeViewer);
     }
